@@ -15,7 +15,8 @@ namespace PersonelMVCUI1.Models.Entity_Framework
     public partial class Kullanici
     {
         public int Id { get; set; }
-        public string Ad { get; set; }
+        public string Email { get; set; }
+        public int PersonelId { get; set; }
         public string Sifre { get; set; }
         public string Role { get; set; }
     }

@@ -1,14 +1,13 @@
 ﻿
 <nav class="navbar navbar-default">
     <div class="container-fluid">
-        <div class="navbar-header">
 
-            <a class="navbar-brand" href="#">Personel Yönetim Sistemi
-                @*@{Html.RenderAction("ToplamMaas", "Personel");}*@
-            </a>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Personel Yönetim Sistemi</a>
         </div>
+
         <ul class="nav navbar-nav">
-            <li class="active"><a href="/Departman">Departmanlar</a></li>
+            <li><a href="/Departman">Departmanlar</a></li>
             <li><a href="/Personel">Personeller</a></li>
 
             @if (User.IsInRole("A"))
@@ -20,12 +19,12 @@
 
             @if (User.IsInRole("A"))
             {
-                <li> @{Html.RenderAction("ToplamMaas", "Personel");}</li>
+                <li style="padding:8px"> @{Html.RenderAction("ToplamMaas", "Personel");}</li>
             }
 
         </ul>
 
-        <div class="active" id="GirisIsmi">
+        <div class="active text-right" id="GirisIsmi">
             <h4>Hoş geldiniz @HttpContext.Current.User.Identity.Name</h4>
         </div>
     </div>

@@ -21,10 +21,10 @@ namespace PersonelMVCUI1.Controllers
         [HttpPost]
         public ActionResult Login(Kullanici kullanici)
         {
-            var kullaniciInDb = db.Kullanici.FirstOrDefault(x => x.Ad == kullanici.Ad && x.Sifre == kullanici.Sifre);
+            var kullaniciInDb = db.Kullanici.FirstOrDefault(x => x.Email == kullanici.Email && x.Sifre == kullanici.Sifre);
             if (kullaniciInDb!=null)
             {
-                FormsAuthentication.SetAuthCookie(kullanici.Ad, false);
+                FormsAuthentication.SetAuthCookie(kullanici.Email, false);
                 return RedirectToAction("Index","Departman");
             }
             else

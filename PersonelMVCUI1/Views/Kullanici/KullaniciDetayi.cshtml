@@ -1,0 +1,28 @@
+﻿@model IEnumerable<PersonelMVCUI1.Models.Entity_Framework.Kullanici>
+
+<h1>Kullanıcının Detayı</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Personel Id</th>
+            <th>Email Adresi</th>
+            <th>Şifre</th>
+            <th>Rolü</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var kullanici in Model)
+        {
+            <tr>
+                <td>@kullanici.PersonelId</td>
+                <td>@kullanici.Email</td>
+                <td>@kullanici.Sifre</td>
+                <td>@kullanici.Role</td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+

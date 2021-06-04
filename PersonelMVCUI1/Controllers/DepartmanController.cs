@@ -8,8 +8,7 @@ using System.Web.Mvc;
 
 namespace PersonelMVCUI1.Controllers
 {
-    //[HandleError]
-    //[Authorize(Roles = "A")]
+    
     public class DepartmanController : Controller
     {
         PersonelDbEntities db = new PersonelDbEntities();
@@ -21,6 +20,7 @@ namespace PersonelMVCUI1.Controllers
 
             return View(model);
         }
+
         [HttpGet]
         public ActionResult Yeni()
         {
@@ -29,7 +29,7 @@ namespace PersonelMVCUI1.Controllers
             return View("DepartmanForm", new Departman());
         }
 
-        //CSRF
+       
         [ValidateAntiForgeryToken]
         public ActionResult Kaydet(Departman departman)
         {

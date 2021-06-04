@@ -18,7 +18,7 @@ namespace PersonelMVCUI1.Models.Entity_Framework
         public int DepartmanId { get; set; }
         public string Ad { get; set; }
         public string Soyad { get; set; }
-        public Nullable<short> Maas { get; set; }
+        public int Maas { get; set; }
         public Nullable<System.DateTime> Dogum_Tarihi { get; set; }
         public bool Cinsiyet { get; set; }
         public bool EvliMi { get; set; }

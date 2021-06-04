@@ -1,7 +1,10 @@
 ﻿@model PersonelMVCUI1.Models.Entity_Framework.Kullanici
 
+<br />
+<br />
+
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -27,8 +30,8 @@
         @using (Html.BeginForm("Login", "Security", FormMethod.Post))
         {
             <div class="form-group">
-                @Html.LabelFor(m => m.Ad)
-                @Html.TextBoxFor(m => m.Ad, new { @class = "form-control", placeholder = "Kullanıcı Adı" })
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Kullanıcı Emaili Giriniz" })
             </div>
 
             <div class="form-group">
@@ -38,8 +41,6 @@
 
             <button type="submit" class="btn btn-block btn-info">Giriş Yap</button>
         }
-
-
 
     </div>
 

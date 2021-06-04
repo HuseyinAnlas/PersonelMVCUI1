@@ -5,11 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d9c7f29142ad434bb43dbce3d6edb2fd" Name="Diagram1">
-        <EntityTypeShape EntityType="PersonelDbModel.Departman" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PersonelDbModel.Personel" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="PersonelDbModel.FK_Personel_Departman" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="PersonelDbModel.Kullanici" Width="1.5" PointX="5" PointY="1.375" />
-        <EntityTypeShape EntityType="PersonelDbModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="PersonelDbModel.Departman" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="PersonelDbModel.Kullanici" Width="1.5" PointX="5.625" PointY="1.5" />
+        <EntityTypeShape EntityType="PersonelDbModel.Personel" Width="1.5" PointX="3" PointY="1" />
+        <AssociationConnector Association="PersonelDbModel.FK_Personel_Departman" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

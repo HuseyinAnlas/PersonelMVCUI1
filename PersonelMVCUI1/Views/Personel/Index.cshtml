@@ -1,16 +1,19 @@
-﻿@model List<PersonelMVCUI1.Models.Entity_Framework.Personel>
+﻿@model IEnumerable<PersonelMVCUI1.Models.Entity_Framework.Personel>
+<br />
+<br />
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@Html.ActionLink("Yeni Personel","Yeni", null, new {@class="btn btn-success"})
+@Html.ActionLink("Personel Ekle", "Yeni", null, new { @class = "btn btn-success" })
 
 <h2>Personel Listesi</h2>
 
-<table class="table table-bordered">
+<table class="table table-bordered table-striped" id="tblPersoneller">
     <thead>
         <tr>
+            <th>Id</th>
             <th>Ad</th>
             <th>Soyad</th>
             <th>Departman</th>
@@ -28,6 +31,7 @@
         @foreach (var personel in Model)
         {
             <tr>
+                <td>@personel.Id</td>
                 <td>@personel.Ad</td>
                 <td>@personel.Soyad</td>
                 <td>@personel.Departman.Ad</td>
@@ -36,8 +40,8 @@
                 <td>@personel.Dogum_Tarihi.Value.ToString("dd-MM-yyyy")</td>
                 <td>@(personel.Cinsiyet==true?"Erkek": "Kadın")</td>
                 <td>@(personel.EvliMi==true?"Evli": "Bekar")</td>
-                <td>@Html.ActionLink("Güncelle","Guncelle", new { id = personel.Id }, new {@class= "btn btn-success"})</td>
-                <td>@Html.ActionLink("Sil", "Sil", new { id = personel.Id }, new { @class="btn btn-danger"})</td>
+                <td>@Html.ActionLink("Güncelle", "Guncelle", new { id = personel.Id }, new { @class = "btn btn-primary" })</td>
+                <td>@Html.ActionLink("Sil", "Sil", new { id = personel.Id }, new { @class = "btn btn-danger btnPersonelSil" })</td>
             </tr>
         }
 

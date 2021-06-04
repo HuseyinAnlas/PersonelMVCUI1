@@ -9,11 +9,10 @@ using PersonelMVCUI1.ViewModels;
 
 namespace PersonelMVCUI1.Controllers
 {
-    //[Authorize(Roles = "A")]
     public class PersonelController : Controller
     {
         PersonelDbEntities db = new PersonelDbEntities();
-        // GET: Personel
+       
         public ActionResult Index()
         {
 
@@ -44,8 +43,10 @@ namespace PersonelMVCUI1.Controllers
                 return View("PersonelForm",model);
             }
 
+            MesajViewModel model1 = new MesajViewModel();
             if (personel.Id==0)
             {
+                model1.Mesaj = personel.Ad + " başarı ile eklendi.";
                 db.Personel.Add(personel);
             }
             else
@@ -53,7 +54,14 @@ namespace PersonelMVCUI1.Controllers
                 db.Entry(personel).State = System.Data.Entity.EntityState.Modified;
             }
             db.SaveChanges();
-            return View("_Mesaj");
+
+            model1.Status = true;
+            model1.LinkText = "Personel Listesi";
+            model1.Url = "/Personel";
+
+            return View("_Mesaj", model1);
+
+            
         }
 
         public ActionResult Guncelle(int id){

@@ -40,10 +40,10 @@ namespace PersonelMVCUI1.Security
             throw new NotImplementedException();
         }
 
-        public override string[] GetRolesForUser(string username)
+        public override string[] GetRolesForUser(string email)
         {
             PersonelDbEntities db = new PersonelDbEntities();
-            var kullanici = db.Kullanici.FirstOrDefault(x => x.Ad == username); //isimler unique e göre ayarlı
+            var kullanici = db.Kullanici.FirstOrDefault(x => x.Email == email); //isimler unique e göre ayarlı
             return new string[] { kullanici.Role };
         }
 

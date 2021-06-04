@@ -1,23 +1,27 @@
 ﻿@using PersonelMVCUI1.Models.Entity_Framework
 @model List<Departman>
+
+<br />
+<br />
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<a class="btn btn-success" href="/Departman/Yeni">Yeni Departman</a>
+@Html.ActionLink("Departman Ekle", "Yeni", null, new { @class = "btn btn-success" })
 
 <h2>Departman Listesi</h2>
 
-<table class="table table-bordered" id="tblDepartmanlar">
+<table class="table table-bordered table-striped" id="tblDepartmanlar">
     <thead>
         <tr>
             <th>Id</th>
             <th>Ad</th>
-            <th>Guncelle</th>
+            <th>Güncelle</th>
             <th>Sil</th>
-            <th>Personeller</th>
-            
+            <th>Personel Listesi</th>
+
         </tr>
     </thead>
     <tbody>
@@ -25,18 +29,15 @@
         {
         <tr>
             <td>@departman.Id</td>
-            <td>@departman.Ad</td>
-            <td><a class="btn btn-primary" href="/Departman/Guncelle/@departman.Id">Güncelle</a></td>
-            <td><a class="btn btn-warning btnDepartmanSil" data-id="@departman.Id" >Sil</a></td>
-            @*<td>@Html.ActionLink("Personelleri göster", "PersonelleriListele", "Personel", new { id = departman.Id }, 
-                new { @class = "btn btn-primary" })</td>*@
-            
-            <td>@Ajax.ActionLink("Personlleri göster", "PersonelleriListele", "Personel",new { id=departman.Id},
-               new AjaxOptions { HttpMethod = "GET", UpdateTargetId="personelListesi"}, new {@class="btn btn-primary"})</td>
-
+            <td>@departman.Ad</td>          
+            <td>@Html.ActionLink("Güncelle", "Guncelle", new { id = departman.Id }, new { @class = "btn btn-primary" })</td>    
+            <td>@Html.ActionLink("Sil", "Sil", new { id = departman.Id }, new { @class = "btn btn-danger btnDepartmanSil" })</td>
+            <td>
+                @Ajax.ActionLink("Personelleri göster", "PersonelleriListele", "Personel", new { id = departman.Id },
+           new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "personelListesi" }, new { @class = "btn btn-warning" })
+            </td>
         </tr>
-        }
-        
+         }
     </tbody>
 </table>
 

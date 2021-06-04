@@ -1,0 +1,52 @@
+﻿@model PersonelMVCUI1.ViewModels.KullaniciFormViewModel
+
+@{
+    ViewBag.Title = "KullaniciForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="mesaj">
+
+</div>
+
+<h2>Kullanıcı Formu</h2>
+@using (Ajax.BeginForm("Kaydet", "Kullanici", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "mesaj" }))
+{
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Kullanici.Email)
+        @Html.TextBoxFor(m => m.Kullanici.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Kullanici.Email)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Kullanici.PersonelId)
+        @Html.DropDownListFor(m => m.Kullanici.PersonelId, new SelectList(Model.Personeller, "Id", "Soyad"), "Personel Seçiniz", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Kullanici.PersonelId)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Kullanici.Sifre)
+        @Html.TextBoxFor(m => m.Kullanici.Sifre, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Kullanici.Sifre)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Kullanici.Role)
+        @Html.TextBoxFor(m => m.Kullanici.Role, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Kullanici.Role)
+    </div>
+
+
+    @Html.HiddenFor(m => m.Kullanici.Id)
+    <button type="submit" class="btn btn-success">Kaydet</button>
+
+}
+
+@section scripts{
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

@@ -1,49 +1,46 @@
 ﻿@model IEnumerable<PersonelMVCUI1.Models.Entity_Framework.Kullanici>
-
+<br />
+<br />
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2></h2>
+@Html.ActionLink("Kullanıcı Ekle", "Yeni", null, new { @class = "btn btn-success" })
 
-@*<p>
-    @Html.ActionLink("Yeni Kişi", "Create")
-</p>*@
+<h2>Kullanici Listesi</h2>
 
-<a class="btn btn-success" href="/Kullanici/Create">Yeni Kişi</a>
+<table class="table table-bordered table-striped" id="tblKullanicilar">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Email</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+            <th>Kullanıcı Detayı</th>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Ad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sifre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Role)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sifre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Role)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var kullanici in Model)
+        {
+            <tr>
+                <td>@kullanici.Id</td>
+                <td>@kullanici.Email</td>   
+                <td>@Html.ActionLink("Güncelle", "Guncelle", new { id = kullanici.Id }, new { @class = "btn btn-primary" })</td>         
+                <td>@Html.ActionLink("Sil", "Sil", new { id = kullanici.Id }, new { @class = "btn btn-danger btnKullaniciSil" })</td>            
+                <td>
+                    @Ajax.ActionLink("Kullanici detayı göster", "KullaniciDetayi", "Kullanici", new { id = kullanici.Id },
+               new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "kullaniciDetayi" }, new { @class = "btn btn-warning" })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+
+<div id="kullaniciDetayi"></div>
+
+
+
+
+
